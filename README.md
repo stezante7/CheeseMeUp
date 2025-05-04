@@ -21,7 +21,7 @@ https://github.com/user-attachments/assets/d33791ab-6019-486a-9975-34f642d0f1c2
   - Toggle "Start at Login"
 - 🚀 Built with .NET 8 and GTK# on Linux
 
-## Got cravings?
+### Got cravings?
 
 If you're in desperate need of a cheese compliment and simply can't wait 30 minutes,  
 **just click the tray icon** and let the cheese work its emotional magic. 🧀✨  
