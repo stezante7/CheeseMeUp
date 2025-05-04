@@ -1,6 +1,14 @@
 # CheeseMeUp 🧀
 
-CheeseMeUp is a lightweight, Linux-friendly tray app that delivers delightful, cheese-themed compliments every 30 minutes — because everyone deserves to feel a little gouda. 😄
+CheeseMeUp is a lightweight, Linux-friendly tray app that delivers delightful, cheese-themed compliments every 30 minutes — because everyone deserves to feel 
+a little gouda. 😄
+
+**Okay seriously, but why?**
+
+> I wanted to start a new, simple project to test my Linux setup for .NET development.
+So I thought to myself: what’s the cheesiest idea I can come up with? 🐵🙈
+
+https://github.com/user-attachments/assets/d33791ab-6019-486a-9975-34f642d0f1c2
 
 ## Features
 
@@ -22,11 +30,6 @@ sudo dpkg -i cheesemeup_1.0.0.deb
 
 Ensure tray support is enabled on your system (e.g., GNOME users may need to install the [AppIndicator extension](https://extensions.gnome.org/extension/615/appindicator-support/)).
 
-
-## Seriously, but why?
-
-> I wanted to start a new, simple project to test my Linux setup for .NET development.
-So I thought to myself: what’s the cheesiest idea I can come up with? 🐵🙈
 
 ## Credits
 
