@@ -40,6 +40,10 @@ jobs:
         mkdir -p cheesemeup_${{ env.VERSION }}/usr/share/applications
         cp packaging/cheesemeup.desktop cheesemeup_${{ env.VERSION }}/usr/share/applications/
 
+        mkdir -p cheesemeup_${{ env.VERSION }}/usr/share/icons/hicolor/48x48/apps
+        cp src/CheeseMeUp/Assets/cheese_1.png cheesemeup_${{ env.VERSION }}/usr/share/icons/hicolor/48x48/apps/cheesemeup.png
+
+
         mkdir -p cheesemeup_${{ env.VERSION }}/DEBIAN
         sed "s/Version: .*/Version: ${{ env.VERSION }}/" packaging/control > cheesemeup_${{ env.VERSION }}/DEBIAN/control
 
