@@ -2,9 +2,8 @@ name: Build and Package CheeseMeUp 🧀
 
 on:
   push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+    tags:
+      - 'v*'
 
 jobs:
   build:
@@ -13,6 +12,10 @@ jobs:
     steps:
     - name: 🧀 Checkout code
       uses: actions/checkout@v3
+
+    - name: Extract version from tag
+      id: version
+      run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_ENV
 
     - name: 🧰 Setup .NET
       uses: actions/setup-dotnet@v3
@@ -28,19 +31,26 @@ jobs:
 
     - name: 🧺 Build .deb package
       run: |
-        mkdir -p cheesemeup_1.0.0/usr/local/bin
-        cp -r publish/* cheesemeup_1.0.0/usr/local/bin/
+        mkdir -p ${{ env.VERSION }}/usr/local/bin
+        cp -r publish/* ${{ env.VERSION }}/usr/local/bin/
 
-        mkdir -p cheesemeup_1.0.0/usr/share/applications
-        cp packaging/cheesemeup.desktop cheesemeup_1.0.0/usr/share/applications/
+        mkdir -p ${{ env.VERSION }}/usr/share/applications
+        cp packaging/cheesemeup.desktop ${{ env.VERSION }}/usr/share/applications/
 
-        mkdir -p cheesemeup_1.0.0/DEBIAN
-        cp packaging/control cheesemeup_1.0.0/DEBIAN/control
+        mkdir -p ${{ env.VERSION }}/DEBIAN
+        cp packaging/control ${{ env.VERSION }}/DEBIAN/control
 
-        dpkg-deb --build cheesemeup_1.0.0 cheesemeup_1.0.0.deb
+        dpkg-deb --build ${{ env.VERSION }} ${{ env.VERSION }}.deb
 
     - name: 📤 Upload .deb as artifact
       uses: actions/upload-artifact@v4
       with:
         name: cheesemeup-deb
-        path: cheesemeup_1.0.0.deb
+        path: ${{ env.VERSION }}.deb
+
+    - name: 🏷️ Create GitHub Release
+      uses: softprops/action-gh-release@v1
+      with:
+        files: cheesemeup_${{ env.VERSION }}.deb
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}        
