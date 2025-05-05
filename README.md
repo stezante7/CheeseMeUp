@@ -33,12 +33,30 @@ No judgment — we all need a little cheddar love sometimes.
 
 ➡️ [Download latest .deb](https://github.com/stezante7/CheeseMeUp/releases/latest/download/cheesemeup.deb)
 
-### Manual (.deb)
+### System Requirements
+
+Install the following packages to ensure notifications and tray icon support:
+
+```bash
+sudo apt install libnotify-bin gnome-shell-extension-appindicator
+```
+
+- libnotify-bin: required for notify-send notifications to work
+- gnome-shell-extension-appindicator: enables tray icons in GNOME/Pop!_OS
+
+After installing the AppIndicator extension, you may need to log out and back in or enable it via GNOME Extensions.
+
+#### CheeseMeUp install (.deb) 
 
 ```bash
 sudo dpkg -i cheesemeup.deb
 
 ```
+
+### Tray icon support
+
+CheeseMeUp uses a system tray icon via `Gtk.StatusIcon`.  
+If you're using GNOME, you may need to install the [AppIndicator extension](https://extensions.gnome.org/extension/615/appindicator-support/) to make the tray icon appear in your top bar.
 
 Ensure tray support is enabled on your system (e.g., GNOME users may need to install the [AppIndicator extension](https://extensions.gnome.org/extension/615/appindicator-support/)).
 
