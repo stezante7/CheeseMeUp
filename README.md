@@ -44,7 +44,7 @@ sudo apt install libnotify-bin gnome-shell-extension-appindicator
 - libnotify-bin: required for notify-send notifications to work
 - gnome-shell-extension-appindicator: enables tray icons in GNOME/Pop!_OS
 
-After installing the AppIndicator extension, you may need to log out and back in or enable it via GNOME Extensions.
+After installing the [AppIndicator extension](https://extensions.gnome.org/extension/615/appindicator-support/), you may need to log out and back in or enable it via GNOME Extensions.
 
 #### CheeseMeUp install (.deb) 
 
@@ -52,13 +52,6 @@ After installing the AppIndicator extension, you may need to log out and back in
 sudo dpkg -i cheesemeup.deb
 
 ```
-
-### Tray icon support
-
-CheeseMeUp uses a system tray icon via `Gtk.StatusIcon`.  
-If you're using GNOME, you may need to install the [AppIndicator extension](https://extensions.gnome.org/extension/615/appindicator-support/) to make the tray icon appear in your top bar.
-
-Ensure tray support is enabled on your system (e.g., GNOME users may need to install the [AppIndicator extension](https://extensions.gnome.org/extension/615/appindicator-support/)).
 
 
 ## Credits
