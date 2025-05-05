@@ -1,0 +1,8 @@
+Package: cheesemeup
+Version: 1.0.0
+Section: utils
+Priority: optional
+Architecture: amd64
+Maintainer: Stefano Zante <stezante7@pm.me>
+Description: Cheese-themed compliment tray app for Linux 🧀
+Depends: libgtk-3-0

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=CheeseMeUp
+Comment=Get delightful cheese-themed compliments 🧀
+Exec=/usr/local/bin/cheesemeup
+Icon=cheesemeup
+Terminal=false
+Categories=Utility;
+StartupNotify=false
