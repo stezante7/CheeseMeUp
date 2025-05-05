@@ -1,3 +1,5 @@
+[![Build Status](https://github.com/stezante7/CheeseMeUp/actions/workflows/build.yml/badge.svg)](https://github.com/stezante7/CheeseMeUp/actions)
+
 # CheeseMeUp 🧀
 
 CheeseMeUp is a lightweight, Linux-friendly tray app that delivers delightful, cheese-themed compliments every 30 minutes — because everyone deserves to feel 
@@ -28,6 +30,9 @@ If you're in desperate need of a cheese compliment and simply can't wait 30 minu
 No judgment — we all need a little cheddar love sometimes.
 
 ## Installation
+
+
+➡️ [Download the latest .deb from Releases](https://github.com/stezante7/CheeseMeUp/releases/latest)
 
 ### Manual (.deb)
 
