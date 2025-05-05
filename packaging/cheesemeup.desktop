@@ -2,7 +2,7 @@
 Type=Application
 Name=CheeseMeUp
 Comment=Get delightful cheese-themed compliments 🧀
-Exec=/usr/local/bin/cheesemeup
+Exec=/usr/local/bin/CheeseMeUp
 Icon=cheesemeup
 Terminal=false
 Categories=Utility;
