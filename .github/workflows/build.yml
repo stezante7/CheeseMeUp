@@ -25,7 +25,6 @@ jobs:
     - name: 🏗️ Build and publish
       run: |
         dotnet publish src/CheeseMeUp -c Release -r linux-x64 --self-contained true -o publish/
-        cp -r Assets publish/Assets  # ensure assets like cheese.png + json are copied
 
     - name: 🧺 Build .deb package
       run: |
