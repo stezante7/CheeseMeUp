@@ -48,7 +48,7 @@ jobs:
         name: cheesemeup-deb
         path: ${{ env.VERSION }}.deb
 
-    - name: 🏷️ Create GitHub Release
+    - name: 🏷️ Create Release
       uses: softprops/action-gh-release@v1
       with:
         files: cheesemeup_${{ env.VERSION }}.deb
