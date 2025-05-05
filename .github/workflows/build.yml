@@ -29,13 +29,10 @@ jobs:
     - name: 🧺 Build .deb package
       run: |
         mkdir -p cheesemeup_1.0.0/usr/local/bin
-        cp publish/CheeseMeUp cheesemeup_1.0.0/usr/local/bin/cheesemeup
+        cp -r publish/* cheesemeup_1.0.0/usr/local/bin/
 
         mkdir -p cheesemeup_1.0.0/usr/share/applications
         cp packaging/cheesemeup.desktop cheesemeup_1.0.0/usr/share/applications/
-
-        mkdir -p cheesemeup_1.0.0/usr/share/icons/hicolor/48x48/apps
-        cp Assets/cheese.png cheesemeup_1.0.0/usr/share/icons/hicolor/48x48/apps/cheesemeup.png
 
         mkdir -p cheesemeup_1.0.0/DEBIAN
         cp packaging/control cheesemeup_1.0.0/DEBIAN/control
