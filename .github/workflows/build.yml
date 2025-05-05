@@ -44,7 +44,7 @@ jobs:
         dpkg-deb --build cheesemeup_1.0.0 cheesemeup_1.0.0.deb
 
     - name: 📤 Upload .deb as artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: cheesemeup-deb
         path: cheesemeup_1.0.0.deb
