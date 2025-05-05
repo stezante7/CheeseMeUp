@@ -4,9 +4,9 @@ on:
   push:
     tags:
       - 'v*'
-      
+
 permissions:
-  contents: write  # ✅ Needed for release upload to work
+  contents: write
 
 jobs:
   build:
@@ -34,26 +34,26 @@ jobs:
 
     - name: 🧺 Build .deb package
       run: |
-        mkdir -p ${{ env.VERSION }}/usr/local/bin
-        cp -r publish/* ${{ env.VERSION }}/usr/local/bin/
+        mkdir -p cheesemeup_${{ env.VERSION }}/usr/local/bin
+        cp -r publish/* cheesemeup_${{ env.VERSION }}/usr/local/bin/
 
-        mkdir -p ${{ env.VERSION }}/usr/share/applications
-        cp packaging/cheesemeup.desktop ${{ env.VERSION }}/usr/share/applications/
+        mkdir -p cheesemeup_${{ env.VERSION }}/usr/share/applications
+        cp packaging/cheesemeup.desktop cheesemeup_${{ env.VERSION }}/usr/share/applications/
 
-        mkdir -p ${{ env.VERSION }}/DEBIAN
-        cp packaging/control ${{ env.VERSION }}/DEBIAN/control
+        mkdir -p cheesemeup_${{ env.VERSION }}/DEBIAN
+        sed "s/Version: .*/Version: ${{ env.VERSION }}/" packaging/control > cheesemeup_${{ env.VERSION }}/DEBIAN/control
 
-        dpkg-deb --build ${{ env.VERSION }} ${{ env.VERSION }}.deb
+        dpkg-deb --build cheesemeup_${{ env.VERSION }} cheesemeup.deb
 
     - name: 📤 Upload .deb as artifact
       uses: actions/upload-artifact@v4
       with:
         name: cheesemeup-deb
-        path: ${{ env.VERSION }}.deb
+        path: cheesemeup.deb
 
     - name: 🏷️ Create Release
       uses: softprops/action-gh-release@v1
       with:
-        files: cheesemeup_${{ env.VERSION }}.deb
+        files: cheesemeup.deb
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}        
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

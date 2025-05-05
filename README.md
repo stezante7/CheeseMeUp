@@ -31,13 +31,12 @@ No judgment — we all need a little cheddar love sometimes.
 
 ## Installation
 
-
-➡️ [Download the latest .deb from Releases](https://github.com/stezante7/CheeseMeUp/releases/latest)
+➡️ [Download latest .deb](https://github.com/stezante7/CheeseMeUp/releases/latest/download/cheesemeup.deb)
 
 ### Manual (.deb)
 
 ```bash
-sudo dpkg -i cheesemeup_1.0.0.deb
+sudo dpkg -i cheesemeup.deb
 
 ```
 
