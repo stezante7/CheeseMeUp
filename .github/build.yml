@@ -1,0 +1,50 @@
+name: Build and Package CheeseMeUp 🧀
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: 🧀 Checkout code
+      uses: actions/checkout@v3
+
+    - name: 🧰 Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '8.0.x'
+
+    - name: 📦 Restore dependencies
+      run: dotnet restore src/CheeseMeUp
+
+    - name: 🏗️ Build and publish
+      run: |
+        dotnet publish src/CheeseMeUp -c Release -r linux-x64 --self-contained true -o publish/
+        cp -r Assets publish/Assets  # ensure assets like cheese.png + json are copied
+
+    - name: 🧺 Build .deb package
+      run: |
+        mkdir -p cheesemeup_1.0.0/usr/local/bin
+        cp publish/CheeseMeUp cheesemeup_1.0.0/usr/local/bin/cheesemeup
+
+        mkdir -p cheesemeup_1.0.0/usr/share/applications
+        cp packaging/cheesemeup.desktop cheesemeup_1.0.0/usr/share/applications/
+
+        mkdir -p cheesemeup_1.0.0/usr/share/icons/hicolor/48x48/apps
+        cp Assets/cheese.png cheesemeup_1.0.0/usr/share/icons/hicolor/48x48/apps/cheesemeup.png
+
+        mkdir -p cheesemeup_1.0.0/DEBIAN
+        cp packaging/control cheesemeup_1.0.0/DEBIAN/control
+
+        dpkg-deb --build cheesemeup_1.0.0 cheesemeup_1.0.0.deb
+
+    - name: 📤 Upload .deb as artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: cheesemeup-deb
+        path: cheesemeup_1.0.0.deb
